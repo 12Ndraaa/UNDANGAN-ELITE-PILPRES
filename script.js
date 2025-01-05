@@ -56,3 +56,17 @@ function toggleAudio() {
         muteIcon.classList.add('bi-volume-mute-fill');
     }
 }
+
+const audioElement = document.getElementById('background-audio');
+
+document.addEventListener('DOMContentLoaded', () => {
+    const playAudio = () => {
+        audioElement.play().catch(error => {
+            console.log('Autoplay prevented. Interaction needed to start audio.');
+        });
+    };
+    playAudio();
+
+    // Memastikan audio berjalan saat ada klik
+    document.addEventListener('click', playAudio, { once: true });
+});
